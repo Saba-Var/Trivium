@@ -15,6 +15,7 @@ class Quiz extends Model
 		'title',
 		'difficulty',
 		'description',
+		'time',
 	];
 
 	public function categories(): BelongsToMany
