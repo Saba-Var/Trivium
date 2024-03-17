@@ -8,12 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SignUpRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Traits\VerifiedUser;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class AuthController extends Controller
 {
+	use VerifiedUser;
+
 	public function signUp(SignUpRequest $request): JsonResponse
 	{
 		$data = $request->validated();
@@ -79,10 +82,5 @@ class AuthController extends Controller
 	{
 		$request->session()->regenerate();
 		$request->session()->regenerateToken();
-	}
-
-	private function getUserWithVerifiedEmail($email): User|null
-	{
-		return User::where('email', $email)->whereNotNull('email_verified_at')->first();
 	}
 }
