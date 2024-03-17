@@ -20,6 +20,6 @@ class Category extends Model
 
 	public function quizzes()
 	{
-		return $this->morphedByMany(Quiz::class, 'categorizable');
+		return $this->belongsToMany(Quiz::class);
 	}
 }
