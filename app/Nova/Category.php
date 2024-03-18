@@ -2,22 +2,19 @@
 
 namespace App\Nova;
 
-use App\Enums\QuizDifficulty as QuizDifficultyEnum;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Quiz extends Resource
+class Category extends Resource
 {
 	/**
 	 * The model the resource corresponds to.
 	 *
-	 * @var class-string<\App\Models\Quiz>
+	 * @var class-string<\App\Models\Category>
 	 */
-	public static $model = \App\Models\Quiz::class;
+	public static $model = \App\Models\Category::class;
 
 	/**
 	 * The single value that should be used to represent the resource when being displayed.
@@ -50,21 +47,7 @@ class Quiz extends Resource
 
 			Text::make('Title')
 				->sortable()
-				->rules('required', 'max:100', 'min:3'),
-
-			Number::make('Time')
-				->sortable()
-				->rules('required', 'min:1', 'max:60', 'integer'),
-
-			Select::make('difficulty')
-				->options(QuizDifficultyEnum::Lables)
-				->displayUsingLabels()
-				->sortable()
-				->rules('required'),
-
-			Trix::make('Description')
-				->sortable()
-				->rules('required', 'max:255', 'min:4'),
+				->rules('required', 'max:40', 'min:3', 'unique:categories'),
 		];
 	}
 
