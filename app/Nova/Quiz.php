@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Enums\QuizDifficulty as QuizDifficultyEnum;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
@@ -65,6 +66,8 @@ class Quiz extends Resource
 			Trix::make('Description')
 				->sortable()
 				->rules('required', 'max:255', 'min:4'),
+
+			BelongsToMany::make('Categories'),
 		];
 	}
 
