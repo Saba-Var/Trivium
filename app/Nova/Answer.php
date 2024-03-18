@@ -23,7 +23,7 @@ class Answer extends Resource
 	 *
 	 * @var string
 	 */
-	public static $title = 'id';
+	public static $title = 'text';
 
 	/**
 	 * The columns that should be searched.
@@ -32,6 +32,7 @@ class Answer extends Resource
 	 */
 	public static $search = [
 		'id',
+		'text',
 	];
 
 	/**
