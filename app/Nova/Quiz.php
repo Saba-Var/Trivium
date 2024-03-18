@@ -59,7 +59,7 @@ class Quiz extends Resource
 				->rules('required', 'min:1', 'max:60', 'integer'),
 
 			Select::make('difficulty')
-				->options(QuizDifficultyEnum::Lables)
+				->options(QuizDifficultyEnum::Labels)
 				->displayUsingLabels()
 				->sortable()
 				->rules('required'),
