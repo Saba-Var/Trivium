@@ -71,6 +71,10 @@ class Quiz extends Resource
 			HasMany::make('Questions'),
 
 			BelongsToMany::make('Categories'),
+
+			Text::make('Total Questions', function () {
+				return $this->questions->count();
+			})->onlyOnIndex(),
 		];
 	}
 
