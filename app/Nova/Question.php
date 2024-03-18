@@ -2,31 +2,29 @@
 
 namespace App\Nova;
 
-use App\Enums\QuizDifficulty as QuizDifficultyEnum;
-use Laravel\Nova\Fields\BelongsToMany;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Quiz extends Resource
+class Question extends Resource
 {
 	/**
 	 * The model the resource corresponds to.
 	 *
-	 * @var class-string<\App\Models\Quiz>
+	 * @var class-string<\App\Models\Question>
 	 */
-	public static $model = \App\Models\Quiz::class;
+	public static $model = \App\Models\Question::class;
 
 	/**
 	 * The single value that should be used to represent the resource when being displayed.
 	 *
 	 * @var string
 	 */
-	public static $title = 'title';
+	public static $title = 'id';
 
 	/**
 	 * The columns that should be searched.
@@ -35,7 +33,6 @@ class Quiz extends Resource
 	 */
 	public static $search = [
 		'id',
-		'title',
 	];
 
 	/**
@@ -50,27 +47,13 @@ class Quiz extends Resource
 		return [
 			ID::make()->sortable(),
 
-			Text::make('Title')
-				->sortable()
-				->rules('required', 'max:100', 'min:3'),
+			Text::make('Text'),
 
-			Number::make('Time')
-				->sortable()
-				->rules('required', 'min:1', 'max:60', 'integer'),
+			BelongsTo::make('Quiz'),
 
-			Select::make('difficulty')
-				->options(QuizDifficultyEnum::Lables)
-				->displayUsingLabels()
-				->sortable()
-				->rules('required'),
+			Boolean::make('Has multiple answers', 'has_multiple_answers'),
 
-			Trix::make('Description')
-				->sortable()
-				->rules('required', 'max:255', 'min:4'),
-
-			HasMany::make('Questions'),
-
-			BelongsToMany::make('Categories'),
+			HasMany::make('Answers'),
 		];
 	}
 

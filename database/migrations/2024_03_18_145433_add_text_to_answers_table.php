@@ -10,8 +10,8 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
-		Schema::table('quizzes', function (Blueprint $table) {
-			$table->integer('time');
+		Schema::table('answers', function (Blueprint $table) {
+			$table->text('text');
 		});
 	}
 
@@ -20,8 +20,8 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
-		Schema::table('quizzes', function (Blueprint $table) {
-			$table->dropColumn('time');
+		Schema::table('answers', function (Blueprint $table) {
+			$table->dropColumn('text');
 		});
 	}
 };
