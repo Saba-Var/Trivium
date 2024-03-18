@@ -9,4 +9,10 @@ class QuizDifficulty
 	const MEDIUM = 'medium';
 
 	const HARD = 'hard';
+
+	const Labels = [
+		self::EASY   => 'Easy',
+		self::MEDIUM => 'Medium',
+		self::HARD   => 'Hard',
+	];
 }
