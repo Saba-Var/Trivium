@@ -53,6 +53,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
 	public function results(): HasMany
 	{
-		return $this->hasMany(Quiz::class);
+		return $this->hasMany(Result::class);
 	}
 }

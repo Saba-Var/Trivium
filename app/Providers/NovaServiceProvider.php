@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Nova;
 use App\Nova\Category;
 use App\Nova\Quiz;
+use App\Nova\Result;
 use App\Nova\User;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -28,6 +29,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 			return [
 				MenuSection::resource(Quiz::class)->icon('document-text'),
 				MenuSection::resource(Category::class)->icon('tag'),
+				MenuSection::resource(Result::class)->icon('document'),
 				MenuSection::resource(User::class)->icon('user-group'),
 			];
 		});
