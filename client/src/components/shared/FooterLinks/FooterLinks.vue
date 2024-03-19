@@ -9,7 +9,7 @@ const sections: Sections = [
   {
     links: [
       { title: 'trivium@gmail.com', isEmail: true },
-      { title: '+995 328989', isPhoneNumber: true }
+      { title: '+995 599123456', isPhoneNumber: true }
     ],
     sectionTitle: 'Contact us'
   },

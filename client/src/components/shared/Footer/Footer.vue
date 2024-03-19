@@ -15,7 +15,7 @@ import FooterLinks from '@/components/shared/FooterLinks/FooterLinks.vue'
     </div>
 
     <p
-      class="py-6 md:h-16 text-mid-blue text-xs border-opacity-40 border-light-grey border-t px-10 mt-7 md:mt-11"
+      class="py-6 md:h-16 text-mid-blue text-xs border-opacity-40 border-light-grey border-t px-10 mt-7 md:mt-11 md:text-right"
     >
       © 2024 QW. All rights reserved
     </p>
