@@ -3,29 +3,27 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Result extends Resource
 {
 	/**
 	 * The model the resource corresponds to.
 	 *
-	 * @var class-string<\App\Models\User>
+	 * @var class-string<\App\Models\Result>
 	 */
-	public static $model = \App\Models\User::class;
+	public static $model = \App\Models\Result::class;
 
 	/**
 	 * The single value that should be used to represent the resource when being displayed.
 	 *
 	 * @var string
 	 */
-	public static $title = 'username';
+	public static $title = 'id';
 
 	/**
 	 * The columns that should be searched.
@@ -33,7 +31,11 @@ class User extends Resource
 	 * @var array
 	 */
 	public static $search = [
-		'id', 'username', 'email',
+		'id',
+		'user_id',
+		'quiz_id',
+		'quiz.title',
+		'user.username',
 	];
 
 	/**
@@ -48,24 +50,25 @@ class User extends Resource
 		return [
 			ID::make()->sortable(),
 
-			Gravatar::make()->maxWidth(50),
+			Number::make('Time')
+				->rules('required', 'min:1', 'max:100')
+				->sortable(),
 
-			Text::make('username')
-				->sortable()
-				->rules('required', 'max:255'),
+			Number::make('Total Points', 'total_points')
+				->rules('required', 'min:1', 'max:100')
+				->sortable(),
 
-			Text::make('Email')
-				->sortable()
-				->rules('required', 'email', 'max:254')
-				->creationRules('unique:users,email')
-				->updateRules('unique:users,email,{{resourceId}}'),
+			Number::make('mistakes')
+				->rules('required', 'min:1', 'max:100')
+				->sortable(),
 
-			Password::make('Password')
-				->onlyOnForms()
-				->creationRules('required', Rules\Password::defaults())
-				->updateRules('nullable', Rules\Password::defaults()),
+			DateTime::make('Created At', 'created_at')
+				->hideFromIndex()
+				->readonly(),
 
-			HasMany::make('results'),
+			BelongsTo::make('User'),
+
+			BelongsTo::make('Quiz'),
 		];
 	}
 
@@ -115,5 +118,20 @@ class User extends Resource
 	public function actions(NovaRequest $request)
 	{
 		return [];
+	}
+
+	public static function authorizedToCreate(Request $request)
+	{
+		return false;
+	}
+
+	public function authorizedToUpdate(Request $request)
+	{
+		return false;
+	}
+
+	public function authorizedToDelete(Request $request)
+	{
+		return false;
 	}
 }
