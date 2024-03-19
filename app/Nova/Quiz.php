@@ -75,6 +75,18 @@ class Quiz extends Resource
 			Text::make('Total Questions', function () {
 				return $this->questions->count();
 			})->onlyOnIndex(),
+
+			Number::make('Total points', function () {
+				$totalPoints = 0;
+
+				$this->questions->each(function ($question) use (&$totalPoints) {
+					$question->answers->each(function ($answer) use (&$totalPoints) {
+						$totalPoints += $answer->point;
+					});
+				});
+
+				return $totalPoints;
+			})->onlyOnIndex(),
 		];
 	}
 
