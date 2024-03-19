@@ -58,13 +58,7 @@ class Question extends Resource
 			HasMany::make('Answers'),
 
 			Number::make('Total points', function () {
-				$totalPoints = 0;
-
-				$this->answers->each(function ($answer) use (&$totalPoints) {
-					$totalPoints += $answer->point;
-				});
-
-				return $totalPoints;
+				return $this->answers->sum('point');
 			})->onlyOnIndex(),
 		];
 	}

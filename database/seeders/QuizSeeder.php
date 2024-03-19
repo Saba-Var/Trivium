@@ -17,27 +17,21 @@ class QuizSeeder extends Seeder
 	{
 		$categories = Category::all();
 
-		Quiz::factory(30)->create();
-
-		$allQuizzes = Quiz::all();
+		$allQuizzes = Quiz::factory(30)->create();
 
 		$allQuizzes->each(function ($quiz) use ($categories) {
 			$quiz->categories()->attach(
 				$categories->random(rand(1, 3))->pluck('id')->toArray()
 			);
 
-			Question::factory(rand(10, 40))->create([
+			$questions = Question::factory(rand(10, 40))->create([
 				'quiz_id' => $quiz->id,
 			]);
 
-			$questions = Question::where('quiz_id', $quiz->id)->get();
-
 			$questions->each(function ($question) {
-				Answer::factory(rand(3, 6))->create([
+				$answers = Answer::factory(rand(3, 6))->create([
 					'question_id' => $question->id,
 				]);
-
-				$answers = Answer::where('question_id', $question->id)->get();
 
 				$correctAnswersCount = $answers->filter(function ($answer) {
 					return $answer->point > 0;
