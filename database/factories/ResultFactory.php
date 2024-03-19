@@ -17,10 +17,15 @@ class ResultFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'time'            => fake()->numberBetween(1, 100),
-			'total_points'    => fake()->numberBetween(1, 100),
-			'mistakes'        => fake()->numberBetween(1, 100),
-			'correct_answers' => fake()->numberBetween(1, 100),
+			'time'            => $this->generateRandomNum(),
+			'total_points'    => $this->generateRandomNum(),
+			'mistakes'        => $this->generateRandomNum(),
+			'correct_answers' => $this->generateRandomNum(),
 		];
+	}
+
+	private function generateRandomNum()
+	{
+		return fake()->numberBetween(1, 100);
 	}
 }
