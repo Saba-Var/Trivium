@@ -76,17 +76,11 @@ class Quiz extends Resource
 				return $this->questions->count();
 			})->onlyOnIndex(),
 
-			Number::make('Total points', function () {
-				$totalPoints = 0;
-
-				$this->questions->each(function ($question) use (&$totalPoints) {
-					$question->answers->each(function ($answer) use (&$totalPoints) {
-						$totalPoints += $answer->point;
-					});
+			Number::make('Total points')->onlyOnIndex()->displayUsing(function () {
+				return $this->questions->sum(function ($question) {
+					return $question->answers->sum('point');
 				});
-
-				return $totalPoints;
-			})->onlyOnIndex(),
+			}),
 		];
 	}
 
