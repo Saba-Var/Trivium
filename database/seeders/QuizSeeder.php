@@ -43,12 +43,6 @@ class QuizSeeder extends Seeder
 					return $answer->point > 0;
 				})->count();
 
-				// if ($correctAnswersCount > 1) {
-				// 	$question->update([
-				// 		'has_multiple_answers' => true,
-				// 	]);
-				// }
-
 				$question->update([
 					'has_multiple_answers' => $correctAnswersCount > 1,
 				]);
