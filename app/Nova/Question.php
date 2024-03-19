@@ -7,6 +7,7 @@ use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -55,6 +56,10 @@ class Question extends Resource
 			Boolean::make('Has multiple answers', 'has_multiple_answers'),
 
 			HasMany::make('Answers'),
+
+			Number::make('Total points', function () {
+				return $this->answers->sum('point');
+			})->onlyOnIndex(),
 		];
 	}
 

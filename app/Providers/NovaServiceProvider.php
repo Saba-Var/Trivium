@@ -5,7 +5,6 @@ namespace App\Providers;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Menu\MenuSection;
-use Laravel\Nova\Menu\MenuItem;
 use Illuminate\Http\Request;
 use Laravel\Nova\Nova;
 use App\Nova\Category;
@@ -23,19 +22,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 	{
 		parent::boot();
 
+		Nova::withBreadcrumbs(true);
+
 		Nova::mainMenu(function (Request $request) {
 			return [
-				MenuSection::make('Quiz', [
-					MenuItem::resource(Quiz::class),
-				])->icon('document-text')->collapsable(),
-
-				MenuSection::make('Category', [
-					MenuItem::resource(Category::class),
-				])->icon('tag')->collapsable(),
-
-				MenuSection::make('User', [
-					MenuItem::resource(User::class),
-				])->icon('user-group')->collapsable(),
+				MenuSection::resource(Quiz::class)->icon('document-text'),
+				MenuSection::resource(Category::class)->icon('tag'),
+				MenuSection::resource(User::class)->icon('user-group'),
 			];
 		});
 	}
