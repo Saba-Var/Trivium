@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PasswordController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
@@ -20,5 +21,11 @@ Route::group(['prefix' => 'auth'], function () {
 	Route::group(['controller' => PasswordController::class], function () {
 		Route::post('forgot-password', 'forgotPassword')->middleware('guest')->name('password.email');
 		Route::post('reset-password', 'resetPassword')->middleware('guest')->name('password.update');
+	});
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+	Route::group(['controller' => CategoryController::class], function () {
+		Route::get('/categories', 'index')->name('categories.index');
 	});
 });
