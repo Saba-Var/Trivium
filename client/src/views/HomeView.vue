@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import StatisticBlock from '@/components/landing/StatisticBlock/StatisticBlock.vue'
+import { useCategories } from '@/composables/useCategories'
+
+const { data } = useCategories()
 </script>
 
 <template>
