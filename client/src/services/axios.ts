@@ -1,4 +1,6 @@
 import { axiosConfig } from '@/config/axiosConfig'
 import Axios from 'axios'
 
-export const axios = Axios.create(axiosConfig)
+const axios = Axios.create(axiosConfig)
+
+export { axios }
