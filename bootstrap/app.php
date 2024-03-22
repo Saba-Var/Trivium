@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Foundation\Application;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -14,7 +13,6 @@ return Application::configure(basePath: dirname(__DIR__))
 	)
 	->withMiddleware(function (Middleware $middleware) {
 		$middleware->statefulApi();
-		$middleware->api(prepend: StartSession::class);
 	})
 	->withExceptions(function (Exceptions $exceptions) {
 	})->create();
