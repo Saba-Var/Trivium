@@ -7,7 +7,13 @@ export const theme = {
       'dark-grey': '#808080',
       'main-black': '#101828',
       'dark-blue': '#475467',
-      'mid-blue': '#667085'
+      'mid-blue': '#667085',
+      'dark-purple': '#4B69FD',
+      'mid-red': '#FF5613'
+    },
+    screens: {
+      '3xl': '1700px',
+      '4xl': '1900px'
     }
   }
 }

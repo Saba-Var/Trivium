@@ -3,7 +3,9 @@ import Footer from '@/components/shared/Footer/Footer.vue'
 </script>
 
 <template>
-  <RouterView />
+  <div class="overflow-x-hidden">
+    <RouterView />
 
-  <Footer />
+    <Footer />
+  </div>
 </template>
