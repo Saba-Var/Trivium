@@ -13,7 +13,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 Route::group(['prefix' => 'auth'], function () {
 	Route::group(['controller' => AuthController::class], function () {
-		Route::post('sign-up', 'signUp')->middleware('throttle:3,1')->name('auth.sign-up');
+		Route::post('sign-up', 'signUp')->name('auth.sign-up');
 		Route::post('log-in', 'logIn')->name('auth.log-in');
 		Route::get('email/verify/{id}/{hash}', 'emailVerify')->middleware(['auth', 'signed'])->name('verification.verify');
 	});
@@ -24,8 +24,6 @@ Route::group(['prefix' => 'auth'], function () {
 	});
 });
 
-Route::middleware('auth:sanctum')->group(function () {
-	Route::group(['controller' => CategoryController::class], function () {
-		Route::get('/categories', 'index')->name('categories.index');
-	});
+Route::group(['controller' => CategoryController::class], function () {
+	Route::get('/categories', 'index')->name('categories.index');
 });

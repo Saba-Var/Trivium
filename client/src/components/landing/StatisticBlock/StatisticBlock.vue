@@ -7,7 +7,9 @@ const props = defineProps<Props>()
 
 <template>
   <div :class="`text-white py-20 px-12 ${props.className}`">
-    <p class="text-7xl font-black flex flex-col">{{ Math.floor(props.count / 5) * 5 }}+</p>
+    <p class="text-7xl font-black flex flex-col">
+      {{ !props.count ? 0 : Math.floor(props.count / 5) * 5 + '+' }}
+    </p>
 
     <RouterLink to="/quizzes" class="flex gap-6 items-center">
       <p class="text-5xl font-black underline">

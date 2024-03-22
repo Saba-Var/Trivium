@@ -53,7 +53,7 @@ class AuthController extends Controller
 
 		if ($isMatch) {
 			Auth::loginUsingId($user->id, array_key_exists('remember', $credentials) ? true : false);
-			$this->regenerateSession($request);
+			request()->session()->regenerate();
 
 			return response()->json([
 				'message' => 'Logged in!',
