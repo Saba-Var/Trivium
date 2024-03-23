@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuizResource;
 use App\Models\Quiz;
 
 class QuizController extends Controller
 {
 	public function index()
 	{
-		$quizzes = Quiz::all();
+		$quizzes = Quiz::paginate(10);
 
-		return response()->json($quizzes);
+		return QuizResource::collection($quizzes);
 	}
 }
