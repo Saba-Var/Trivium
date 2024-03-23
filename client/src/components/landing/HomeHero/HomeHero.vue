@@ -5,15 +5,16 @@ import girlImage from '@/../public/images/girl-reading-book.png'
 
 <template>
   <div class="lg:order-2 lg:w-[60%] lg:h-[85vh]">
-    <HeroTitle class-name="hidden lg:block absolute left-0" />
+    <HeroTitle className="hidden lg:block absolute left-12" />
 
     <div class="overflow-hidden lg:h-full relative">
       <div class="relative lg:h-full">
         <img
-          :src="girlImage"
-          alt="girl reading a book"
           class="mx-auto w-[90%] lg:absolute lg:w-[60%] lg:left-1/2 lg:-translate-x-1/2"
+          alt="girl reading a book"
+          :src="girlImage"
         />
+
         <div
           class="bg-black rounded-full w-[120%] lg:w-full -z-[2] aspect-square absolute left-1/2 -translate-x-1/2 -bottom-[90%] lg:bottom-[5%] translate-y-1/2"
         ></div>

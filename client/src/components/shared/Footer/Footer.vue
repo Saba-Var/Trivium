@@ -4,7 +4,7 @@ import FooterLinks from '@/components/shared/FooterLinks/FooterLinks.vue'
 
 <template>
   <footer class="md:py-11 z-20 bg-white">
-    <div class="md:flex px-10 md:px-10 lg:gap-10 md:gap-24 2xl:gap-40">
+    <div class="md:flex px-10 md:px-10 lg:gap-10 md:gap-24 2xl:gap-40 lg:px-24">
       <p
         class="border-b border-opacity-40 md:border-none border-light-grey font-black text-2xl py-6 md:py-0"
       >
