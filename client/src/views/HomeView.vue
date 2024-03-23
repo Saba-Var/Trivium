@@ -17,14 +17,14 @@ const { data: quizzes } = useQuizzes()
     <HomeHero />
 
     <StatisticBlock
+      :count="quizzes?.data?.meta?.total || 0"
       class-name="bg-mid-red lg:hidden"
-      :count="quizzes?.data?.length"
       text="Quiz games"
     />
 
     <StatisticBlock
-      :count="categories?.data?.length"
-      className="bg-dark-purple lg:order-1 lg:h-56 lg:w-[40%] lg:-z-[3]"
+      className="bg-dark-purple lg:order-1 lg:h-56 lg:w-[40%]"
+      :count="categories?.data?.length || 0"
       text="Different genres"
     />
 
