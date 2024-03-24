@@ -4,7 +4,7 @@ import girlImage from '@/../public/images/girl-reading-book.png'
 </script>
 
 <template>
-  <div class="lg:order-2 lg:w-[60%] lg:h-[85vh]">
+  <div class="lg:order-2 lg:w-[60%] lg:h-[85vh] lg:mt-10 3xl:mt-20">
     <HeroTitle className="hidden lg:block absolute left-12" />
 
     <div class="overflow-hidden lg:h-full relative">

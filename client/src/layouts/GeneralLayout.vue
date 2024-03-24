@@ -7,7 +7,9 @@ import MainFooter from '@/components/shared/MainFooter/MainFooter.vue'
   <div class="overflow-x-hidden">
     <MainNavbar />
 
-    <RouterView />
+    <div class="pt-16 lg:pt-20">
+      <RouterView />
+    </div>
 
     <MainFooter />
   </div>
