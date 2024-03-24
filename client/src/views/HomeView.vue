@@ -11,19 +11,19 @@ const { data: quizzes } = useQuizzes()
 </script>
 
 <template>
-  <HeroTitle class-name="lg:hidden" />
+  <HeroTitle class="lg:hidden" />
 
   <div class="lg:flex items-end relative">
     <HomeHero />
 
     <StatisticBlock
       :count="quizzes?.data?.meta?.total || 0"
-      class-name="bg-mid-red lg:hidden"
+      class="bg-mid-red lg:hidden"
       text="Quiz games"
     />
 
     <StatisticBlock
-      className="bg-dark-purple lg:order-1 lg:h-56 lg:w-[40%]"
+      class="bg-dark-purple lg:order-1 lg:h-56 lg:w-[40%]"
       :count="categories?.data?.length || 0"
       text="Different genres"
     />

@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="`text-white py-20 px-12 lg:pt-7 lg:pb-16 lg:pr-40 ${props.className}`">
+  <div :class="`text-white py-20 px-12 lg:pt-7 lg:pb-16 lg:pr-40 ${props.class}`">
     <p class="text-7xl font-black flex flex-col">
       {{ number + '+' }}
     </p>

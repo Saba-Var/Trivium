@@ -32,7 +32,7 @@ const toggleMobileHeader = () => {
         <p class="text-mid-blue text-sm">Search</p>
       </div>
 
-      <BurgerMenuIcon @click="toggleMobileHeader" className="lg:hidden" />
+      <BurgerMenuIcon @click="toggleMobileHeader" class="lg:hidden" />
 
       <RouterLink to="/auth/sign-up" class="hidden lg:block">
         <button class="bg-black font-bold text-sm rounded px-5 py-3 text-white">Sign Up</button>

@@ -1,5 +1,5 @@
 export type Props = {
-  className?: string
+  class?: string
   count: number
   text: string
 }
