@@ -1,7 +1,7 @@
 <script setup lang="ts">
-const props = defineProps<{
-  className: string
-}>()
+import type { Props } from './types'
+
+const props = defineProps<Props>()
 </script>
 
 <template>
