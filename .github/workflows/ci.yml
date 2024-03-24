@@ -18,14 +18,9 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: cd into client
-        run: cd client
-
-      - name: Install dependencies
-        run: npm i
-
-      - name: Run linting
-        run: npm run lint
-
-      - name: Build
-        run: npm run build
+      - name: Install dependencies, lint and build
+        run: |
+          cd client
+          npm ci
+          npm run lint
+          npm run build
