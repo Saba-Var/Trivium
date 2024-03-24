@@ -1,25 +1,30 @@
 <script setup lang="ts">
 import TopRightArrowIcon from '@/components/icons/TopRightArrowIcon.vue'
+import { onMounted, ref, watch } from 'vue'
 import type { Props } from './types'
-import { ref, watch } from 'vue'
 
 const props = defineProps<Props>()
 
 const number = ref(0)
 
-watch(
-  () => props.count,
-  (newVal) => {
-    number.value = 0
-    const interval = setInterval(() => {
-      if (number.value < newVal) {
-        number.value += 1
-      } else {
-        clearInterval(interval)
-      }
-    }, 100)
+const increaseHandler = () => {
+  number.value = 0
+  const interval = setInterval(() => {
+    if (number.value < props.count) {
+      number.value += 1
+    } else {
+      clearInterval(interval)
+    }
+  }, 100)
+}
+
+watch(() => props.count, increaseHandler)
+
+onMounted(() => {
+  if (number.value === 0) {
+    increaseHandler()
   }
-)
+})
 </script>
 
 <template>

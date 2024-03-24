@@ -21,7 +21,10 @@ const emit = defineEmits<Emits>()
           <CloseIcon @click="emit('toggle')" />
         </div>
 
-        <RouterLink to="/quizzes" class="text-main-black text-lg font-semibold pb-5 border-b"
+        <RouterLink
+          @click="emit('toggle')"
+          to="/quizzes"
+          class="text-main-black text-lg font-semibold pb-5 border-b"
           >Quizzes</RouterLink
         >
 
