@@ -15,7 +15,9 @@ const emit = defineEmits<Emits>()
 
       <div class="fixed left-0 top-0 bg-white w-[20.6rem] p-6 z-[1000] flex flex-col gap-5">
         <div class="flex justify-between items-center pb-5 border-b">
-          <p class="text-black text-2xl font-black">Trivium</p>
+          <RouterLink @click="emit('toggle')" to="/">
+            <p class="text-black text-2xl font-black">Trivium</p>
+          </RouterLink>
           <CloseIcon @click="emit('toggle')" />
         </div>
 

@@ -22,7 +22,9 @@ const toggleMobileHeader = () => {
   <div
     class="flex fixed w-full bg-white z-50 p-4 border-b border-mid-blue border-opacity-20 justify-between lg:px-24 lg:mb-16 3xl:mb-20 4xl:mb-24"
   >
-    <p class="text-black text-2xl font-black">Trivium</p>
+    <RouterLink to="/">
+      <p class="text-black text-2xl font-black">Trivium</p>
+    </RouterLink>
 
     <div class="flex gap-6 items-center">
       <div class="flex items-center gap-2 lg:hidden">
