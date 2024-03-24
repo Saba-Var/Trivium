@@ -1,12 +1,26 @@
 <script setup lang="ts">
+import MobileHeader from '@/components/shared/MobileHeader/MobileHeader.vue'
 import BurgerMenuIcon from '@/components/icons/BurgerMenuIcon.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
 import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
+
+const showMobileHeader = ref(false)
+
+const toggleMobileHeader = () => {
+  if (showMobileHeader.value) {
+    document.body.style.overflow = 'auto'
+  } else {
+    document.body.style.overflow = 'hidden'
+  }
+
+  showMobileHeader.value = !showMobileHeader.value
+}
 </script>
 
 <template>
   <div
-    class="flex p-4 border-b border-mid-blue border-opacity-20 justify-between lg:px-24 lg:mb-16 3xl:mb-20 4xl:mb-24"
+    class="flex fixed w-full bg-white z-50 p-4 border-b border-mid-blue border-opacity-20 justify-between lg:px-24 lg:mb-16 3xl:mb-20 4xl:mb-24"
   >
     <p class="text-black text-2xl font-black">Trivium</p>
 
@@ -16,7 +30,7 @@ import { RouterLink } from 'vue-router'
         <p class="text-mid-blue text-sm">Search</p>
       </div>
 
-      <BurgerMenuIcon className="lg:hidden" />
+      <BurgerMenuIcon @click="toggleMobileHeader" className="lg:hidden" />
 
       <RouterLink to="/auth/sign-up" class="hidden lg:block">
         <button class="bg-black font-bold text-sm rounded px-5 py-3 text-white">Sign Up</button>
@@ -27,4 +41,6 @@ import { RouterLink } from 'vue-router'
       </RouterLink>
     </div>
   </div>
+
+  <MobileHeader @toggle="toggleMobileHeader" v-if="showMobileHeader" />
 </template>
