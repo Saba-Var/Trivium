@@ -19,9 +19,9 @@ const backgroundColor = authViewsData[currentViewName].backgroundColor
 
 <template>
   <div class="flex flex-col lg:flex-row min-h-screen">
-    <RouterLink class="fixed top-4 left-4 lg:top-10 llg:eft-10 text-xl font-black" to="/"
-      >Trivium</RouterLink
-    >
+    <RouterLink class="fixed top-4 left-4 lg:top-10 lg:left-10 text-xl font-black" to="/">
+      Trivium
+    </RouterLink>
 
     <div
       :class="`w-full lg:w-[40%] pt-14 mb-10 lg:mb-0 lg:pt-0 flex items-center justify-center ${currentViewName === 'SignUp' && '!justify-start lg:justify-start'}`"

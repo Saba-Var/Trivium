@@ -2,7 +2,9 @@
 import CloseIcon from '@/components/icons/CloseIcon.vue'
 import type { Emits } from './types'
 
-const emit = defineEmits<Emits>()
+const emit = defineEmits<{
+  (e: 'toggle'): void
+}>()
 </script>
 
 <template>

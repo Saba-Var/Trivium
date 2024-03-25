@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import TopRightArrowIcon from '@/components/icons/TopRightArrowIcon.vue'
 import { onMounted, ref, watch } from 'vue'
-import type { Props } from './types'
 
-const props = defineProps<Props>()
+const props = defineProps<{
+  class?: string
+  count: number
+  text: string
+}>()
 
 const number = ref(0)
 

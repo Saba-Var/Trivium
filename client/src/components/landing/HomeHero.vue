@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeroTitle from '@/components/landing/HeroTitle/HeroTitle.vue'
+import HeroTitle from '@/components/landing/HeroTitle.vue'
 import girlImage from '@/../public/images/girl-reading-book.png'
 </script>
 

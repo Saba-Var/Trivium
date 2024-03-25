@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FooterLinks from '@/components/shared/FooterLinks/FooterLinks.vue'
+import FooterLinks from '@/components/shared/FooterLinks.vue'
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BackgroundBlock from '@/components/landing/BackgroundBlock/BackgroundBlock.vue'
-import StatisticBlock from '@/components/landing/StatisticBlock/StatisticBlock.vue'
-import HeroTitle from '@/components/landing/HeroTitle/HeroTitle.vue'
-import HomeHero from '@/components/landing/HomeHero/HomeHero.vue'
+import BackgroundBlock from '@/components/landing/BackgroundBlock.vue'
+import StatisticBlock from '@/components/landing/StatisticBlock.vue'
 import { useCategories } from '@/composables/useCategories'
+import HeroTitle from '@/components/landing/HeroTitle.vue'
+import HomeHero from '@/components/landing/HomeHero.vue'
 import { useQuizzes } from '@/composables/useQuizzes'
 
 const { data: categories } = useCategories()

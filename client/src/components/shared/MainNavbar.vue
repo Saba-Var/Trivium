@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MobileHeader from '@/components/shared/MobileHeader/MobileHeader.vue'
+import MobileHeader from '@/components/shared/MobileHeader.vue'
 import BurgerMenuIcon from '@/components/icons/BurgerMenuIcon.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
 import { RouterLink } from 'vue-router'

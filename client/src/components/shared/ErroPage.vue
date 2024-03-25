@@ -2,9 +2,11 @@
 import CurvedGoBackIcon from '@/components/icons/CurvedGoBackIcon.vue'
 import IntervalServerErrorIcon from '@/components/icons/IntervalServerErrorIcon.vue'
 import NotFoundIcon from '@/components/icons/NotFoundIcon.vue'
-import type { Props } from './types'
 
-const props = defineProps<Props>()
+const props = defineProps<{
+  title: string
+  errorCode: 404 | 500
+}>()
 </script>
 
 <template>
