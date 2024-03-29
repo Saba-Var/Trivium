@@ -10,7 +10,8 @@ export const theme = {
       'dark-blue': '#475467',
       'mid-blue': '#667085',
       'dark-purple': '#4B69FD',
-      'mid-red': '#FF5613'
+      'mid-red': '#FF5613',
+      'main-red': '#F04438'
     },
     screens: {
       '3xl': '1700px',

@@ -1,16 +1,21 @@
 <script setup>
-import { Form } from 'vee-validate'
 import TextInputField from '@/components/shared/TextInputField.vue'
+import { signUpSchema } from '@/schemas/signUpSchema'
+import { useForm } from 'vee-validate'
 
-const submit = (values) => {
+const { handleSubmit } = useForm({
+  validationSchema: signUpSchema
+})
+
+const onSubmit = handleSubmit((values) => {
   console.log(values)
-}
+})
 </script>
 
 <template>
   <h1 class="mb-6 lg:mb-10 text-2xl lg:text-3xl font-extrabold text-black">Create account</h1>
 
-  <Form class="flex flex-col gap-6" @submit="submit">
+  <form class="flex flex-col gap-8" @submit="onSubmit">
     <TextInputField placeholder="Your username" name="username" label="Username" />
     <TextInputField placeholder="Example@gmail.com" name="email" label="Email" />
     <TextInputField placeholder="must be 8 characters" name="password" label="Create a password" />
@@ -25,7 +30,7 @@ const submit = (values) => {
     <button class="p-4 bg-black rounded-[10px] font-semibold text-white text-base mt-3">
       Sign up
     </button>
-  </Form>
+  </form>
 
   <div class="flex items-center gap-1 mt-6 lg:mt-9 text-sm">
     <p class="text-mid-black">Already have an account?</p>

@@ -13,8 +13,8 @@ const authViewsData = {
 }
 
 const currentViewName = route.name as keyof typeof authViewsData
-const PageIcon = authViewsData[currentViewName].icon
-const backgroundColor = authViewsData[currentViewName].backgroundColor
+const currentViewData = authViewsData[currentViewName]
+const PageIcon = currentViewData.icon
 </script>
 
 <template>
@@ -27,8 +27,8 @@ const backgroundColor = authViewsData[currentViewName].backgroundColor
     </RouterLink>
 
     <div
-      :class="`w-full lg:w-[45%] pt-14 mb-10 lg:mb-0 lg:pt-0 flex items-center justify-center ${currentViewName === 'SignUp' && '!justify-start lg:justify-start'}`"
-      :style="{ backgroundColor }"
+      :class="`w-full lg:w-[55%] pt-14 mb-10 lg:mb-0 lg:pt-0 flex items-center justify-center ${currentViewName === 'SignUp' && '!justify-start lg:justify-start'}`"
+      :style="{ backgroundColor: currentViewData.backgroundColor }"
     >
       <PageIcon class="max-w-[70%] h-4/6" />
     </div>
@@ -42,7 +42,7 @@ const backgroundColor = authViewsData[currentViewName].backgroundColor
         <p>Back</p>
       </button>
 
-      <div class="pt-10 lg:pt-32 lg:pr-[40%]">
+      <div class="pt-10 lg:pt-32 lg:pr-[35%]">
         <RouterView />
       </div>
     </div>
