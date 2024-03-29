@@ -1,5 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import TextInputField from '@/components/shared/TextInputField.vue'
+import CheckboxField from '@/components/shared/CheckboxField.vue'
 import { signUpSchema } from '@/schemas/signUpSchema'
 import { useForm } from 'vee-validate'
 
@@ -30,8 +31,7 @@ const onSubmit = handleSubmit((values) => {
       label="Confirm password"
       type="password"
     />
-
-    <div class="text-mid-black text-sm">I accept the terms and privacy policy</div>
+    <CheckboxField label="I accept the terms and privacy policy" name="agreement" />
 
     <button class="p-4 bg-black rounded-[10px] font-semibold text-white text-base mt-3">
       Sign up

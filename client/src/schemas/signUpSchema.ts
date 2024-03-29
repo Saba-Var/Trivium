@@ -7,5 +7,6 @@ export const signUpSchema = yup.object({
   password_confirmation: yup
     .string()
     .required('Password confirmation is required')
-    .oneOf([yup.ref('password'), null!], 'Passwords must match')
+    .oneOf([yup.ref('password'), null!], 'Passwords must match'),
+  agreement: yup.boolean().required('You must agree to the terms')
 })
