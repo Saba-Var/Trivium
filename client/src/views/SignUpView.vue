@@ -18,11 +18,17 @@ const onSubmit = handleSubmit((values) => {
   <form class="flex flex-col gap-8" @submit="onSubmit">
     <TextInputField placeholder="Your username" name="username" label="Username" />
     <TextInputField placeholder="Example@gmail.com" name="email" label="Email" />
-    <TextInputField placeholder="must be 8 characters" name="password" label="Create a password" />
+    <TextInputField
+      placeholder="must be 8 characters"
+      label="Create a password"
+      type="password"
+      name="password"
+    />
     <TextInputField
       placeholder="must be 8 characters"
       name="password_confirmation"
       label="Confirm password"
+      type="password"
     />
 
     <div class="text-mid-black text-sm">I accept the terms and privacy policy</div>
