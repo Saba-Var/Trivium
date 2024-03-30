@@ -1,6 +1,9 @@
-export type SignUpRequestData = {
+export type LogInRequestData = {
   email: string
-  username: string
   password: string
-  password_confirmation: string
 }
+
+export type SignUpRequestData = {
+  username: string
+  password_confirmation: string
+} & LogInRequestData

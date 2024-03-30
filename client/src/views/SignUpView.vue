@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AuthSubmitButton from '@/components/shared/AuthSubmitButton.vue'
 import TextInputField from '@/components/shared/TextInputField.vue'
 import CheckboxField from '@/components/shared/CheckboxField.vue'
 import { signUpRequest } from '@/services/requests/auth'
@@ -51,19 +52,11 @@ const onSubmit = handleSubmit((values) => {
     />
     <CheckboxField label="I accept the terms and privacy policy" name="agreement" />
 
-    <button
-      :class="[
-        'p-4 bg-black rounded-[10px] font-semibold text-white text-base mt-3',
-        isPending ? 'opacity-50 cursor-not-allowed' : 'hover:bg-gray-900'
-      ]"
-      :disabled="isPending"
-    >
-      Sign up
-    </button>
+    <AuthSubmitButton :disabled="isPending" text="Sign up" />
   </form>
 
   <div class="flex items-center gap-1 mt-6 lg:mt-9 text-sm">
     <p class="text-mid-black">Already have an account?</p>
-    <RouterLink to="/login" class="text-blue-500 font-bold">Log in</RouterLink>
+    <RouterLink to="/auth/log-in" class="text-blue-500 font-bold">Log in</RouterLink>
   </div>
 </template>

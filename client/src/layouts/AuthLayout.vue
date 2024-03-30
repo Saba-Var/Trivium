@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import GirlWithUfoIcon from '@/components/icons/GirlWithUfoIcon.vue'
+import GirlReadingBook from '@/components/icons/GirlReadingBook.vue'
 import BackIcon from '@/components/icons/BackIcon.vue'
 import { useRoute } from 'vue-router'
 
@@ -9,6 +10,10 @@ const authViewsData = {
   SignUp: {
     icon: GirlWithUfoIcon,
     backgroundColor: '#f4fcfe'
+  },
+  LogIn: {
+    icon: GirlReadingBook,
+    backgroundColor: '#FEF6E7'
   }
 }
 

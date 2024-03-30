@@ -2,6 +2,7 @@ import InternalServerError from '@/views/InternalServerError.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import GeneralLayout from '@/layouts/GeneralLayout.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
+import LogInView from '@/views/LogInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
 import HomeView from '@/views/HomeView.vue'
 import NotFound from '@/views/NotFound.vue'
@@ -34,6 +35,11 @@ const router = createRouter({
           path: 'sign-up',
           name: 'SignUp',
           component: SignUpView
+        },
+        {
+          path: 'log-in',
+          name: 'LogIn',
+          component: LogInView
         }
       ]
     }
