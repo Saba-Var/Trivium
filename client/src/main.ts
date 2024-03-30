@@ -1,7 +1,7 @@
 import './index.css'
 
 import { VueQueryPlugin } from '@tanstack/vue-query'
-import { toastOptions } from '@/config/toastConfig'
+import { toastOptions } from '@/config/toastOptions'
 import 'vue-toastification/dist/index.css'
 import Toast from 'vue-toastification'
 import { createApp } from 'vue'

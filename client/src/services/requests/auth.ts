@@ -9,3 +9,7 @@ export const signUpRequest = (data: SignUpRequestData): AxiosPromiseResult => {
 export const logInRequest = (data: LogInRequestData): AxiosPromiseResult => {
   return axios.post('/api/auth/log-in', data)
 }
+
+export const verifyEmailRequest = (verificationUrl: string): AxiosPromiseResult => {
+  return axios.get(`/api/auth/email/verify${verificationUrl}`)
+}
