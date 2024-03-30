@@ -3,27 +3,28 @@ import AuthSubmitButton from '@/components/shared/AuthSubmitButton.vue'
 import TextInputField from '@/components/shared/TextInputField.vue'
 import CheckboxField from '@/components/shared/CheckboxField.vue'
 import HandWaveIcon from '@/components/icons/HandWaveIcon.vue'
-import { signUpRequest } from '@/services/requests/auth'
+import { logInRequest } from '@/services/requests/auth'
 import type { LogInRequestData } from '@/types/auth'
 import { logInSchema } from '@/schemas/logInSchema'
 import { useMutation } from '@tanstack/vue-query'
 import { useForm } from 'vee-validate'
+import router from '@/router'
 
 const { handleSubmit, setErrors } = useForm<LogInRequestData>({
   validationSchema: logInSchema
 })
 
 const { mutate: logInMutation, isPending } = useMutation({
-  mutationFn: signUpRequest
+  mutationFn: logInRequest
 })
 
 const onSubmit = handleSubmit((values) => {
   logInMutation(values, {
     onSuccess: () => {
-      // TODO: implement log in logic
+      router.push('/')
     },
     onError: (error: any) => {
-      setErrors(error?.response?.data?.errors)
+      setErrors(error?.response?.data)
     }
   })
 })
