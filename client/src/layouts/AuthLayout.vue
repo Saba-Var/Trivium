@@ -3,6 +3,7 @@ import GirlWithUfoIcon from '@/components/icons/GirlWithUfoIcon.vue'
 import GirlReadingBook from '@/components/icons/GirlReadingBook.vue'
 import BackIcon from '@/components/icons/BackIcon.vue'
 import { useRoute } from 'vue-router'
+import { computed, ref, watch } from 'vue'
 
 const route = useRoute()
 
@@ -17,9 +18,17 @@ const authViewsData = {
   }
 }
 
-const currentViewName = route.name as keyof typeof authViewsData
-const currentViewData = authViewsData[currentViewName]
-const PageIcon = currentViewData.icon
+const currentViewName = ref(route.name as keyof typeof authViewsData)
+
+watch(
+  () => route.name,
+  (newRouteName) => {
+    currentViewName.value = newRouteName as keyof typeof authViewsData
+  }
+)
+
+const currentViewData = computed(() => authViewsData[currentViewName.value])
+const PageIcon = computed(() => currentViewData.value.icon)
 </script>
 
 <template>
