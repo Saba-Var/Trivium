@@ -21,10 +21,9 @@ const props = defineProps<{
     <NotFoundIcon v-if="props.errorCode === 404" />
     <IntervalServerErrorIcon v-if="props.errorCode === 500" />
 
-    <div class="flex items-center gap-3 text-dark-purple text-lg">
+    <RouterLink to="/" class="flex items-center gap-3 text-dark-purple text-lg">
       <CurvedGoBackIcon />
-
-      <RouterLink to="/" class="text-dark-purple font-normal">Go home</RouterLink>
-    </div>
+      <p class="text-dark-purple font-normal">Go home</p>
+    </RouterLink>
   </div>
 </template>

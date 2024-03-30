@@ -5,9 +5,12 @@ import { signUpRequest } from '@/services/requests/auth'
 import { signUpSchema } from '@/schemas/signUpSchema'
 import type { SignUpRequestData } from '@/types/auth'
 import { useMutation } from '@tanstack/vue-query'
+import { useToast } from 'vue-toastification'
 import { useForm } from 'vee-validate'
 
-const { handleSubmit, setErrors } = useForm<SignUpRequestData>({
+const toast = useToast()
+
+const { handleSubmit, setErrors, resetForm } = useForm<SignUpRequestData>({
   validationSchema: signUpSchema
 })
 
@@ -17,8 +20,11 @@ const { mutate: signUpMutation, isPending } = useMutation({
 
 const onSubmit = handleSubmit((values) => {
   signUpMutation(values, {
+    onSuccess: () => {
+      toast.success('Verification link sent to your email. Please verify!', { timeout: 6000 })
+      resetForm()
+    },
     onError: (error: any) => {
-      console.log(error)
       setErrors(error?.response?.data?.errors)
     }
   })
