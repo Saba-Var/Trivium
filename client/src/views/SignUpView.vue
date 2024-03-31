@@ -39,13 +39,13 @@ const onSubmit = handleSubmit((values) => {
     <TextInputField placeholder="Your username" name="username" label="Username" />
     <TextInputField placeholder="Example@gmail.com" name="email" label="Email" />
     <TextInputField
-      placeholder="must be 8 characters"
+      placeholder="must be at least 4 characters"
       label="Create a password"
       type="password"
       name="password"
     />
     <TextInputField
-      placeholder="must be 8 characters"
+      placeholder="must be at least 4 characters"
       name="password_confirmation"
       label="Confirm password"
       type="password"

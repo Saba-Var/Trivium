@@ -20,6 +20,10 @@ const authViewsData = {
   ForgotPassword: {
     icon: GirlWithFan,
     backgroundColor: '#FCE7F1'
+  },
+  ResetPassword: {
+    icon: GirlWithFan,
+    backgroundColor: '#FCE7F1'
   }
 }
 
@@ -32,8 +36,8 @@ watch(
   }
 )
 
-const currentViewData = computed(() => authViewsData[currentViewName.value])
-const PageIcon = computed(() => currentViewData.value.icon)
+const currentViewData = computed(() => authViewsData?.[currentViewName?.value])
+const PageIcon = computed(() => currentViewData?.value?.icon)
 </script>
 
 <template>
@@ -47,9 +51,10 @@ const PageIcon = computed(() => currentViewData.value.icon)
 
     <div
       :class="`w-full lg:w-[55%] pt-14 mb-10 lg:mb-0 lg:pt-0 flex items-center justify-center ${currentViewName === 'SignUp' && '!justify-start lg:justify-start'}`"
-      :style="{ backgroundColor: currentViewData.backgroundColor }"
+      :style="{ backgroundColor: currentViewData?.backgroundColor || '#f4fcfe' }"
     >
-      <PageIcon class="max-w-[70%] h-4/6" />
+      <PageIcon v-if="PageIcon" class="max-w-[70%] h-4/6" />
+      <GirlWithFan v-else class="max-w-[70%] h-4/6" />
     </div>
 
     <div class="w-full lf:w-[55%] relative px-3 lg:px-0 lg:pl-20 pb-20">
