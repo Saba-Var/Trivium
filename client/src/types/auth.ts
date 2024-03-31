@@ -12,6 +12,11 @@ export type SignUpRequestData = {
 } & Passwords &
   Omit<LogInRequestData, 'remember'>
 
+export type ResetPasswordRequestData = {
+  token: string
+  email: string
+} & Passwords
+
 export type ForgotPasswordRequestData = {
   email: string
 }

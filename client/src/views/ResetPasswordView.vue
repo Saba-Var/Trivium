@@ -3,20 +3,29 @@ import AuthSubmitButton from '@/components/shared/AuthSubmitButton.vue'
 import { resetPasswordSchema } from '@/schemas/resetPasswordSchema'
 import TextInputField from '@/components/shared/TextInputField.vue'
 import { resetPasswordRequest } from '@/services/requests/auth'
+import { ResetPasswordRequestData } from '@/types/auth'
 import { useMutation } from '@tanstack/vue-query'
 import type { Passwords } from '@/types/auth'
 import { useToast } from 'vue-toastification'
 import { useForm } from 'vee-validate'
+import { onMounted } from 'vue'
 import router from '@/router'
+
+const queryParam = router.currentRoute.value.query
+const token = queryParam.token as string
+const email = queryParam.email as string
+
+const isLinkValid = !!token && !!email
 
 const toast = useToast()
 
-const { handleSubmit, setErrors } = useForm<Passwords>({
+const { handleSubmit } = useForm<Passwords>({
   validationSchema: resetPasswordSchema
 })
 
 const { mutate: resetPasswordMutation, isPending } = useMutation({
-  mutationFn: resetPasswordRequest
+  mutationFn: (values: ResetPasswordRequestData) =>
+    resetPasswordRequest({ ...values, token, email })
 })
 
 const onSubmit = handleSubmit((values) => {
@@ -25,10 +34,16 @@ const onSubmit = handleSubmit((values) => {
       toast.success('Password reset successfully! Please login.')
       router.push({ name: 'Login' })
     },
-    onError: (error: any) => {
-      setErrors(error?.response?.data?.errors)
+    onError: () => {
+      toast.error('Failed to reset password. Please try again.')
     }
   })
+})
+
+onMounted(() => {
+  if (!token || !email) {
+    toast.error('Invalid reset password link')
+  }
 })
 </script>
 
@@ -53,7 +68,7 @@ const onSubmit = handleSubmit((values) => {
       type="password"
     />
 
-    <AuthSubmitButton :disabled="isPending" text="Reset password" />
+    <AuthSubmitButton :disabled="isPending || !isLinkValid" text="Reset password" />
   </form>
 
   <div class="flex items-center gap-1 mt-6 lg:mt-9 text-sm">

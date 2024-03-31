@@ -2,9 +2,9 @@ import type { AxiosPromiseResult } from '@/types/global'
 import { axios } from '@/services/axios'
 import type {
   ForgotPasswordRequestData,
+  ResetPasswordRequestData,
   SignUpRequestData,
-  LogInRequestData,
-  Passwords
+  LogInRequestData
 } from '@/types/auth'
 
 export const signUpRequest = (data: SignUpRequestData): AxiosPromiseResult => {
@@ -23,6 +23,6 @@ export const forgotPasswordRequest = (data: ForgotPasswordRequestData): AxiosPro
   return axios.post('/api/auth/forgot-password', data)
 }
 
-export const resetPasswordRequest = (data: Passwords): AxiosPromiseResult => {
+export const resetPasswordRequest = (data: ResetPasswordRequestData): AxiosPromiseResult => {
   return axios.post('/api/auth/reset-password', data)
 }
