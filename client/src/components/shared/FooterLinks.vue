@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import type { Sections } from './types'
+type Sections = {
+  sectionTitle: string
+  links: {
+    title: string
+    url?: string
+    isEmail?: boolean
+    isPhoneNumber?: boolean
+  }[]
+}[]
 
 const sections: Sections = [
   {

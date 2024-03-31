@@ -1,11 +1,11 @@
 <script setup lang="ts">
-const props = defineProps<{ className?: string }>()
+const props = defineProps<{ class?: string }>()
 </script>
 
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    :class="props.className"
+    :class="props.class"
     viewBox="0 0 20 14"
     width="20"
     height="14"

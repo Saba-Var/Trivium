@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import FooterLinks from '@/components/shared/FooterLinks/FooterLinks.vue'
+import FooterLinks from '@/components/shared/FooterLinks.vue'
 </script>
 
 <template>
-  <footer class="md:py-11 z-20 bg-white">
+  <footer class="md:pt-11 z-20 bg-white">
     <div class="md:flex px-10 md:px-10 lg:gap-10 md:gap-24 2xl:gap-40 lg:px-24">
-      <p
+      <RouterLink
+        to="/"
         class="border-b border-opacity-40 md:border-none border-light-grey font-black text-2xl py-6 md:py-0"
+        >Trivium</RouterLink
       >
-        Trivium
-      </p>
 
       <FooterLinks />
     </div>

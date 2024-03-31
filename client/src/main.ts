@@ -1,15 +1,17 @@
 import './index.css'
 
-import { createApp } from 'vue'
-
 import { VueQueryPlugin } from '@tanstack/vue-query'
-
-import App from './App.vue'
+import { toastOptions } from '@/config/toastOptions'
+import 'vue-toastification/dist/index.css'
+import Toast from 'vue-toastification'
+import { createApp } from 'vue'
 import router from './router'
+import App from './App.vue'
 
 const app = createApp(App)
 
 app.use(router)
 app.use(VueQueryPlugin)
+app.use(Toast, toastOptions)
 
 app.mount('#app')

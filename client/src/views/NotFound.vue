@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ErrorPage from '@/components/shared/ErrorPage/ErroPage.vue'
+import ErrorPage from '@/components/shared/ErroPage.vue'
 </script>
 
 <template>

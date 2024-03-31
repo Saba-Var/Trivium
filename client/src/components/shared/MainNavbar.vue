@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MobileHeader from '@/components/shared/MobileHeader/MobileHeader.vue'
+import MobileHeader from '@/components/shared/MobileHeader.vue'
 import BurgerMenuIcon from '@/components/icons/BurgerMenuIcon.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
 import { RouterLink } from 'vue-router'
@@ -32,7 +32,7 @@ const toggleMobileHeader = () => {
         <p class="text-mid-blue text-sm">Search</p>
       </div>
 
-      <BurgerMenuIcon @click="toggleMobileHeader" className="lg:hidden" />
+      <BurgerMenuIcon @click="toggleMobileHeader" class="lg:hidden" />
 
       <RouterLink to="/auth/sign-up" class="hidden lg:block">
         <button class="bg-black font-bold text-sm rounded px-5 py-3 text-white">Sign Up</button>

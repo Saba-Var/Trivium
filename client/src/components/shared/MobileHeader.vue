@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import CloseIcon from '@/components/icons/CloseIcon.vue'
-import type { Emits } from './types'
 
-const emit = defineEmits<Emits>()
+const emit = defineEmits<{
+  (e: 'toggle'): void
+}>()
 </script>
 
 <template>
@@ -21,7 +22,10 @@ const emit = defineEmits<Emits>()
           <CloseIcon @click="emit('toggle')" />
         </div>
 
-        <RouterLink to="/quizzes" class="text-main-black text-lg font-semibold pb-5 border-b"
+        <RouterLink
+          @click="emit('toggle')"
+          to="/quizzes"
+          class="text-main-black text-lg font-semibold pb-5 border-b"
           >Quizzes</RouterLink
         >
 

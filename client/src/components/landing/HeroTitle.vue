@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Props } from './types'
-
-const props = defineProps<Props>()
+const props = defineProps<{
+  class: string
+}>()
 </script>
 
 <template>
-  <div :class="'ml-10 ' + props.className">
+  <div :class="['ml-10', props.class]">
     <h1
       class="text-black text-center text-5xl font-bold mb-5 mt-8 lg:text-left lg:text-6xl xl:text-9xl"
     >
