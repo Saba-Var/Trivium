@@ -1,4 +1,4 @@
-import type { LogInRequestData, SignUpRequestData } from '@/types/auth'
+import type { LogInRequestData, SignUpRequestData, ForgotPasswordRequestData } from '@/types/auth'
 import type { AxiosPromiseResult } from '@/types/global'
 import { axios } from '@/services/axios'
 
@@ -12,4 +12,8 @@ export const logInRequest = (data: LogInRequestData): AxiosPromiseResult => {
 
 export const verifyEmailRequest = (verificationUrl: string): AxiosPromiseResult => {
   return axios.get(`/api/auth/email/verify${verificationUrl}`)
+}
+
+export const forgotPasswordRequest = (data: ForgotPasswordRequestData): AxiosPromiseResult => {
+  return axios.post('/api/auth/forgot-password', data)
 }

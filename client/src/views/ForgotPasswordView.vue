@@ -1,57 +1,31 @@
 <script setup lang="ts">
-import { logInRequest, verifyEmailRequest } from '@/services/requests/auth'
 import AuthSubmitButton from '@/components/shared/AuthSubmitButton.vue'
+import { forgotPasswordSchema } from '@/schemas/forgotPasswordSchema'
 import TextInputField from '@/components/shared/TextInputField.vue'
-import type { LogInRequestData } from '@/types/auth'
-import { logInSchema } from '@/schemas/logInSchema'
+import { forgotPasswordRequest } from '@/services/requests/auth'
+import type { ForgotPasswordRequestData } from '@/types/auth'
 import { useMutation } from '@tanstack/vue-query'
 import { useToast } from 'vue-toastification'
 import { useForm } from 'vee-validate'
-import { onMounted } from 'vue'
-import router from '@/router'
 
 const toast = useToast()
 
-const { handleSubmit, setErrors } = useForm<LogInRequestData>({
-  validationSchema: logInSchema
+const { handleSubmit, setErrors, resetForm } = useForm<ForgotPasswordRequestData>({
+  validationSchema: forgotPasswordSchema
 })
 
-const { mutate: logInMutation, isPending } = useMutation({
-  mutationFn: logInRequest
-})
-
-const queryParams = router.currentRoute.value.query
-const signature = queryParams.signature
-const emailVerificationUrl = queryParams.emailVerificationUrl as string
-
-const { mutate: verifyEmailMutation } = useMutation({
-  mutationFn: () => {
-    const verifyRoute =
-      (emailVerificationUrl || '')?.split('/verify')?.[1] + `&signature=${signature}`
-    return verifyEmailRequest(verifyRoute)
-  },
-  onSuccess: () => {
-    router.replace('/auth/log-in')
-    toast.success('Email verified successfully! You can now log in.')
-  },
-  onError: () => {
-    toast.error('Email verification failed!')
-  }
-})
-
-onMounted(() => {
-  if (emailVerificationUrl && signature) {
-    verifyEmailMutation()
-  }
+const { mutate: forgotPasswordMutation, isPending } = useMutation({
+  mutationFn: forgotPasswordRequest
 })
 
 const onSubmit = handleSubmit((values) => {
-  logInMutation(values, {
+  forgotPasswordMutation(values, {
     onSuccess: () => {
-      router.push('/quizzes')
+      toast.success('Password reset link has been sent to your email!', { timeout: 6000 })
+      resetForm()
     },
     onError: (error: any) => {
-      setErrors(error?.response?.data)
+      setErrors(error?.response?.data?.errors)
     }
   })
 })
@@ -69,6 +43,6 @@ const onSubmit = handleSubmit((values) => {
   <form class="flex flex-col gap-8" @submit="onSubmit">
     <TextInputField placeholder="enter your email address" name="email" label="Email address" />
 
-    <AuthSubmitButton :disabled="isPending" text="Log in" />
+    <AuthSubmitButton :disabled="isPending" text="Send" />
   </form>
 </template>

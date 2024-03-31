@@ -8,3 +8,7 @@ export type SignUpRequestData = {
   username: string
   password_confirmation: string
 } & Omit<LogInRequestData, 'remember'>
+
+export type ForgotPasswordRequestData = {
+  email: string
+}
