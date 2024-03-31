@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import GirlWithUfoIcon from '@/components/icons/GirlWithUfoIcon.vue'
 import GirlReadingBook from '@/components/icons/GirlReadingBook.vue'
+import GirlWithFan from '@/components/icons/GirlWithFan.vue'
 import BackIcon from '@/components/icons/BackIcon.vue'
-import { useRoute } from 'vue-router'
 import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
@@ -15,6 +16,10 @@ const authViewsData = {
   LogIn: {
     icon: GirlReadingBook,
     backgroundColor: '#FEF6E7'
+  },
+  ForgotPassword: {
+    icon: GirlWithFan,
+    backgroundColor: '#FCE7F1'
   }
 }
 

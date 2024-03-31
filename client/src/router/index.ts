@@ -1,4 +1,5 @@
 import InternalServerError from '@/views/InternalServerError.vue'
+import ForgotPasswordView from '@/views/ForgotPasswordView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import GeneralLayout from '@/layouts/GeneralLayout.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
@@ -40,6 +41,11 @@ const router = createRouter({
           path: 'log-in',
           name: 'LogIn',
           component: LogInView
+        },
+        {
+          path: 'forgot-password',
+          name: 'ForgotPassword',
+          component: ForgotPasswordView
         }
       ]
     }
