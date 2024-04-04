@@ -7,7 +7,7 @@ import FooterLinks from '@/components/shared/FooterLinks.vue'
     <div class="md:flex px-10 md:px-10 lg:gap-10 md:gap-24 2xl:gap-40 lg:px-24">
       <RouterLink
         to="/"
-        class="border-b border-opacity-40 md:border-none border-light-grey font-black text-2xl py-6 md:py-0"
+        class="border-b border-opacity-40 pb-3 md:border-none block border-light-grey font-black text-2xl my-6 md:py-0 md:mt-3"
         >Trivium</RouterLink
       >
 

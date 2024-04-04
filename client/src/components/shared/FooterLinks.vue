@@ -33,7 +33,7 @@ const sections: Sections = [
 
 <template>
   <div :key="section.sectionTitle" v-for="section in sections">
-    <p class="text-main-black text-sm font-semibold mt-4 md:mt-0 md:mb-6">
+    <p class="text-main-black text-sm font-semibold mt-6 md:mt-4 md:mt-0 md:mb-6">
       {{ section.sectionTitle }}
     </p>
 
