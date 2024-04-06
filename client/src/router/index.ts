@@ -3,6 +3,7 @@ import ForgotPasswordView from '@/views/ForgotPasswordView.vue'
 import ResetPasswordView from '@/views/ResetPasswordView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import GeneralLayout from '@/layouts/GeneralLayout.vue'
+import QuizzesView from '@/views/QuizzesView.vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import LogInView from '@/views/LogInView.vue'
 import SignUpView from '@/views/SignUpView.vue'
@@ -25,6 +26,11 @@ const router = createRouter({
           path: '/internal-server-error',
           name: 'InternalServerError',
           component: InternalServerError
+        },
+        {
+          path: '/quizzes',
+          name: 'Quizzes',
+          component: QuizzesView
         },
         { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound }
       ]
