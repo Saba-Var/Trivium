@@ -20,6 +20,27 @@ class Quiz extends Model
 		'time',
 	];
 
+	public function scopeCreatedAt(Builder $query): Builder
+	{
+		$order = request()->input('created_at');
+		return $query->orderBy('created_at', $order ?? 'asc');
+	}
+
+	public function scopeMostPopular(Builder $query): Builder
+	{
+		return $query->when(request()->input('most_popular'), function ($query) {
+			return $query->withCount('results')->orderBy('results_count', 'desc');
+		});
+	}
+
+	public function scopeTitleOrder(Builder $query): Builder
+	{
+		return $query->when(request()->input('title'), function ($query) {
+			$order = request()->input('title');
+			return $query->orderBy('title', $order ?? 'asc');
+		});
+	}
+
 	public function scopeDifficulties(Builder $query, Collection $filters): Builder
 	{
 		return  $query->when($filters->has('difficulty'), function ($query) use ($filters) {

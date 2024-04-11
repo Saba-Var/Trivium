@@ -25,7 +25,10 @@ class QuizController extends Controller
 
 		$query->difficulties($filters)
 			  ->completedByUser($filters)
-			  ->categories($filters);
+			  ->categories($filters)
+			  ->createdAt()
+			  ->mostPopular()
+			  ->titleOrder();
 
 		return QuizResource::collection($query->paginate($pageSize));
 	}
