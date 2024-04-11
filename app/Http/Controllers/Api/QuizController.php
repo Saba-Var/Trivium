@@ -15,8 +15,6 @@ class QuizController extends Controller
 
 	public function index(QuizzesRequest $request): AnonymousResourceCollection
 	{
-		$request->validated();
-
 		$filters = $this->getCollectionOfQueryFilters();
 
 		$pageSize = request()->query()['pageSize'] ?? 10;
