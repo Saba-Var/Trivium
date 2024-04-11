@@ -6,7 +6,12 @@ const props = defineProps<{
 </script>
 
 <template>
-  <li :class="['flex-shrink-0', props.isActive ? 'border-b border-b-black' : '']">
+  <li
+    :class="[
+      'flex-shrink-0 cursor-pointer pb-[18px]',
+      props.isActive ? 'border-b border-b-black' : ''
+    ]"
+  >
     <button :class="['text-mid-blue text-sm font-semibold', props.isActive ? '!text-black' : '']">
       {{ props.title }}
     </button>
