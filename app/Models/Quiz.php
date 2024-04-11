@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Quiz extends Model
@@ -12,11 +13,16 @@ class Quiz extends Model
 	use HasFactory;
 
 	protected $fillable = [
-		'title',
-		'difficulty',
 		'description',
+		'difficulty',
+		'title',
 		'time',
 	];
+
+	public function scopeDifficulties(Builder $query, array|string $difficulties): Builder
+	{
+		return $query->whereIn('difficulty', (array) $difficulties);
+	}
 
 	public function categories(): BelongsToMany
 	{

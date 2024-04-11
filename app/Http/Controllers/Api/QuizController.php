@@ -10,7 +10,15 @@ class QuizController extends Controller
 {
 	public function index()
 	{
-		$quizzes = Quiz::paginate(10);
+		$filter = request()->query();
+
+		$difficulties = $filter['filter']['difficulty'];
+
+		$difficulties = explode(',', $difficulties);
+
+		$quizzes = Quiz::when($difficulties, function ($query) use ($difficulties) {
+			return $query->difficulties($difficulties);
+		})->get();
 
 		return QuizResource::collection($quizzes);
 	}
