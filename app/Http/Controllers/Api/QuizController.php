@@ -4,21 +4,32 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\QuizResource;
+use App\Http\Traits\QueryFilters;
 use App\Models\Quiz;
 
 class QuizController extends Controller
 {
+	use QueryFilters;
+
 	public function index()
 	{
-		$filter = request()->query();
+		$filter = $this->turnIntoQueryFilters(['difficulty']);
 
-		$difficulties = $filter['filter']['difficulty'];
+		if (count($filter) == 0) {
+			return QuizResource::collection(Quiz::paginate(10));
+		}
 
-		$difficulties = explode(',', $difficulties);
+		$query = Quiz::query();
 
-		$quizzes = Quiz::when($difficulties, function ($query) use ($difficulties) {
-			return $query->difficulties($difficulties);
-		})->get();
+		$query->when($filter->has('difficulty'), function ($query) use ($filter) {
+			return $query->whereIn('difficulty', $filter->get('difficulty'));
+		});
+
+		$query->when($filter->has('completed'), function ($query) use ($filter) {
+			return $query->completedByUser();
+		});
+
+		$quizzes = $query->paginate(10);
 
 		return QuizResource::collection($quizzes);
 	}

@@ -24,6 +24,22 @@ class Quiz extends Model
 		return $query->whereIn('difficulty', (array) $difficulties);
 	}
 
+	public function scopeCompletedByUser(Builder $query): Builder
+	{
+		$completedFilterValue = request()->query('filter')['completed'] ?? null;
+		$userId = auth()->id();
+
+		if ($completedFilterValue === 'true') {
+			return $query->whereHas('results', function ($query) use ($userId) {
+				$query->where('user_id', $userId);
+			});
+		}
+
+		return $query->whereDoesntHave('results', function ($query) use ($userId) {
+			$query->where('user_id', $userId);
+		});
+	}
+
 	public function categories(): BelongsToMany
 	{
 		return $this->belongsToMany(Category::class);
