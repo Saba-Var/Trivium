@@ -14,6 +14,15 @@ class QuizResource extends JsonResource
 	 */
 	public function toArray(Request $request): array
 	{
-		return parent::toArray($request);
+		return [
+			'id'                => $this->id,
+			'title'             => $this->title,
+			'description'       => $this->description,
+			'difficulty'        => $this->difficulty,
+			'time'              => $this->time,
+			'users_count'       => $this->results->count(),
+			'user_result'       => $this->results->where('user_id', auth()->id())->first(),
+			'categories'        => CategoryResource::collection($this->categories),
+		];
 	}
 }

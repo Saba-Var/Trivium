@@ -3,9 +3,8 @@ import AuthSubmitButton from '@/components/shared/AuthSubmitButton.vue'
 import { resetPasswordSchema } from '@/schemas/resetPasswordSchema'
 import TextInputField from '@/components/shared/TextInputField.vue'
 import { resetPasswordRequest } from '@/services/requests/auth'
-import { ResetPasswordRequestData } from '@/types/auth'
+import type { ResetPasswordRequestData } from '@/types/auth'
 import { useMutation } from '@tanstack/vue-query'
-import type { Passwords } from '@/types/auth'
 import { useToast } from 'vue-toastification'
 import { useForm } from 'vee-validate'
 import { onMounted } from 'vue'
@@ -19,7 +18,7 @@ const isLinkValid = !!token && !!email
 
 const toast = useToast()
 
-const { handleSubmit } = useForm<Passwords>({
+const { handleSubmit } = useForm<ResetPasswordRequestData>({
   validationSchema: resetPasswordSchema
 })
 

@@ -15,4 +15,6 @@ class QuizDifficulty
 		self::MEDIUM => 'Medium',
 		self::HARD   => 'Hard',
 	];
+
+	const QUERY_FILTER_VALUE = self::EASY . ',' . self::MEDIUM . ',' . self::HARD;
 }
