@@ -19,10 +19,6 @@ class QuizController extends Controller
 
 		$pageSize = request()->query()['pageSize'] ?? 10;
 
-		if (count($filters) == 0) {
-			return QuizResource::collection(Quiz::paginate($pageSize));
-		}
-
 		$query = Quiz::query();
 
 		$query->difficulties($filters)
