@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\QuizzesRequest;
 use App\Http\Resources\QuizResource;
 use App\Http\Traits\QueryFilters;
 use App\Models\Quiz;
@@ -11,8 +13,10 @@ class QuizController extends Controller
 {
 	use QueryFilters;
 
-	public function index()
+	public function index(QuizzesRequest $request): AnonymousResourceCollection
 	{
+		$request->validated();
+
 		$filters = $this->getCollectionOfQueryFilters();
 
 		$pageSize = request()->query()['pageSize'] ?? 10;
