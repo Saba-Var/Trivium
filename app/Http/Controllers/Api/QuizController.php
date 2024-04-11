@@ -13,30 +13,20 @@ class QuizController extends Controller
 
 	public function index()
 	{
-		$filter = $this->getCollectionOfQueryFilters();
+		$filters = $this->getCollectionOfQueryFilters();
 
 		$pageSize = request()->query()['pageSize'] ?? 10;
 
-		if (count($filter) == 0) {
+		if (count($filters) == 0) {
 			return QuizResource::collection(Quiz::paginate($pageSize));
 		}
 
 		$query = Quiz::query();
 
-		$query->when($filter->has('difficulty'), function ($query) use ($filter) {
-			return $query->whereIn('difficulty', $filter->get('difficulty'));
-		});
+		$query->difficulties($filters)
+			  ->completedByUser($filters)
+			  ->categories($filters);
 
-		$query->when($filter->has('completed'), function ($query) use ($filter) {
-			return $query->completedByUser($filter->get('completed')[0] === 'true');
-		});
-
-		$query->when($filter->has('categories'), function ($query) use ($filter) {
-			return $query->categories($filter->get('categories'));
-		});
-
-		$quizzes = $query->paginate($pageSize);
-
-		return QuizResource::collection($quizzes);
+		return QuizResource::collection($query->paginate($pageSize));
 	}
 }
