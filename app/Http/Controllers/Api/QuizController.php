@@ -13,10 +13,12 @@ class QuizController extends Controller
 
 	public function index()
 	{
-		$filter = $this->turnIntoQueryFilters(['difficulty']);
+		$filter = $this->getCollectionOfQueryFilters();
+
+		$pageSize = request()->query()['pageSize'] ?? 10;
 
 		if (count($filter) == 0) {
-			return QuizResource::collection(Quiz::paginate(10));
+			return QuizResource::collection(Quiz::paginate($pageSize));
 		}
 
 		$query = Quiz::query();
@@ -26,10 +28,14 @@ class QuizController extends Controller
 		});
 
 		$query->when($filter->has('completed'), function ($query) use ($filter) {
-			return $query->completedByUser();
+			return $query->completedByUser($filter->get('completed')[0] === 'true');
 		});
 
-		$quizzes = $query->paginate(10);
+		$query->when($filter->has('categories'), function ($query) use ($filter) {
+			return $query->categories($filter->get('categories'));
+		});
+
+		$quizzes = $query->paginate($pageSize);
 
 		return QuizResource::collection($quizzes);
 	}

@@ -21,15 +21,15 @@ class Quiz extends Model
 
 	public function scopeDifficulties(Builder $query, array|string $difficulties): Builder
 	{
+		dd($difficulties);
 		return $query->whereIn('difficulty', (array) $difficulties);
 	}
 
-	public function scopeCompletedByUser(Builder $query): Builder
+	public function scopeCompletedByUser(Builder $query, bool $completed): Builder
 	{
-		$completedFilterValue = request()->query('filter')['completed'] ?? null;
 		$userId = auth()->id();
 
-		if ($completedFilterValue === 'true') {
+		if ($completed) {
 			return $query->whereHas('results', function ($query) use ($userId) {
 				$query->where('user_id', $userId);
 			});
@@ -37,6 +37,13 @@ class Quiz extends Model
 
 		return $query->whereDoesntHave('results', function ($query) use ($userId) {
 			$query->where('user_id', $userId);
+		});
+	}
+
+	public function scopeCategories(Builder $query, array|string $categories): Builder
+	{
+		return $query->whereHas('categories', function ($query) use ($categories) {
+			$query->whereIn('category_id', (array) $categories);
 		});
 	}
 
