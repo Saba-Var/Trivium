@@ -3,11 +3,12 @@
 namespace App\Nova;
 
 use App\Enums\QuizDifficulty as QuizDifficultyEnum;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\ID;
@@ -81,6 +82,12 @@ class Quiz extends Resource
 					return $question->answers->sum('point');
 				});
 			}),
+
+			Image::make('Image')
+				->disk('public')
+				->path('quizzes')
+				->prunable()
+				->required(),
 		];
 	}
 

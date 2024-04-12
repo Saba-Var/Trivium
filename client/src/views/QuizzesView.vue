@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CategorySelectSlider from '@/components/quizzes/CategorySelectSlider.vue'
 import QuizzesFilterButton from '@/components/quizzes/QuizzesFilterButton.vue'
+import QuizzesList from '@/components/quizzes/QuizzesList.vue'
 import { ref } from 'vue'
 
 const activeCategoryId = ref<number | null>(null)
@@ -20,5 +21,7 @@ const categoryChangeHandler = (categoryId: number) => {
 
       <QuizzesFilterButton />
     </div>
+
+    <QuizzesList :activeCategoryId="activeCategoryId" />
   </div>
 </template>

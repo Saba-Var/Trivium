@@ -22,6 +22,7 @@ class QuizFactory extends Factory
 			'description' => fake()->text(),
 			'time'        => fake()->numberBetween(1, 60),
 			'difficulty'  => fake()->randomElement([QuizDifficulty::EASY, QuizDifficulty::MEDIUM, QuizDifficulty::HARD]),
+			'image'       => fake()->imageUrl(),
 		];
 	}
 }

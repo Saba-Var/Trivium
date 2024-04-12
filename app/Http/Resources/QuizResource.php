@@ -21,8 +21,9 @@ class QuizResource extends JsonResource
 			'difficulty'        => $this->difficulty,
 			'time'              => $this->time,
 			'users_count'       => $this->results->count(),
-			'user_result'       => $this->results->where('user_id', auth()->id())->first(),
+			'user_result'       => $this->results->where('user_id', auth()->id())->where('quiz_id', $this->id)->first(),
 			'categories'        => CategoryResource::collection($this->categories),
+			'image'             => $this->image,
 		];
 	}
 }

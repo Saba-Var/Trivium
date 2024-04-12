@@ -1,10 +1,18 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const props = defineProps<{ color?: string; class?: string }>()
+
+const color = computed(() => props.color || 'currentColor')
+</script>
+
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="h-3.5 w-3.5"
+    :class="['h-3.5 w-3.5', props.class]"
     viewBox="0 0 20 20"
-    fill="currentColor"
-    stroke="currentColor"
+    :fill="color"
+    :stroke="color"
     stroke-width="1"
   >
     <path

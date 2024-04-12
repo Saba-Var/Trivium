@@ -28,8 +28,24 @@ export interface Category extends TimeStamps {
 
 export interface Quiz extends TimeStamps {
   difficulty: Difficulty
+  categories: Category[]
   description: string
   title: string
   time: number
   id: number
+  users_count: number
+  user_result?: UserResult | null
+  image: string
+}
+
+export interface UserResult extends TimeStamps {
+  id: number
+  quiz_id: number
+  user_id: number
+  correct_answers: number
+  mistakes: number
+  total_points: number
+  time: number
+  created_at: string
+  updated_at: string
 }

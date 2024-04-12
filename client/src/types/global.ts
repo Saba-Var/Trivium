@@ -10,3 +10,5 @@ export type PaginatedResult<T> = {
 export type Difficulty = (typeof difficulties)[number]
 
 export type AxiosPromiseResult<T = {}> = Promise<AxiosResponse<T>>
+
+export type OrderBy = 'asc' | 'desc'
