@@ -17,7 +17,7 @@ class QuizController extends Controller
 	{
 		$filters = $this->getCollectionOfQueryFilters();
 
-		$pageSize = request()->query()['pageSize'] ?? 10;
+		$pageSize = request()->query()['pageSize'] ?? 9;
 
 		$query = Quiz::query();
 

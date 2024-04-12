@@ -3,7 +3,7 @@ import FooterLinks from '@/components/shared/FooterLinks.vue'
 </script>
 
 <template>
-  <footer class="md:pt-11 z-20 bg-white">
+  <footer class="md:pt-11 z-20 bg-white lg:border-t lg:border-t-gray-200">
     <div class="md:flex px-10 md:px-10 lg:gap-10 md:gap-24 2xl:gap-40 lg:px-24">
       <RouterLink
         to="/"

@@ -12,7 +12,7 @@ const categoryChangeHandler = (categoryId: number) => {
 </script>
 
 <template>
-  <div class="px-4 py-5 lg:px-24">
+  <div class="px-4 py-5 lg:px-24 lg:pb-16">
     <div class="flex flex-col gap-5 lg:flex-row">
       <CategorySelectSlider
         :activeCategoryId="activeCategoryId"

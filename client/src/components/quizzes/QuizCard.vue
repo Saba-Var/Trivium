@@ -18,7 +18,10 @@ const quizImage = computed(() => {
 </script>
 
 <template>
-  <div class="px-6 pt-6 pb-8 shadow-lg">
+  <RouterLink
+    :to="`/quizzes/${quiz.id}`"
+    class="px-6 pt-6 pb-8 shadow-lg cursor-pointer hover:scale-105 transition-all duration-150 hover:shadow-xl"
+  >
     <img class="max-h-[235px] mx-auto mb-8" :src="quizImage" />
 
     <ul class="flex gap-3 flex-wrap mb-3">
@@ -87,5 +90,5 @@ const quizImage = computed(() => {
         </template>
       </QuizAdditionalInfoSection>
     </div>
-  </div>
+  </RouterLink>
 </template>
